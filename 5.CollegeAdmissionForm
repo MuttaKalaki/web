@@ -66,7 +66,7 @@ width: 90%;
 <body>
 <div class="container">
 <h2>College Admission Form</h2>
-<form action="thankyou.<html">
+<form action="thankyou.html">
 <label>Full Name</label>
 <input type="text" placeholder="Enter your name" required>
 <label>Email</label>
