@@ -1,0 +1,379 @@
+Index.html
+<!DOCTYPEhtml>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechStore</title>
+<style>
+body{margin:0;font-family:Arial}
+nav{background:#000;padding:10px;text-align:center}
+nav a{color:white;margin:10px;text-decoration:none}
+.hero{
+height:80vh;
+background:url('img/watch.jpg') center/cover;
+display:flex;align-items:center;justify-content:center;
+color:white;text-align:center;
+}
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#000;
+padding:10px 20px;
+flex-wrap:wrap;
+}
+.logo{
+color:#00d4ff;
+font-size:20px;
+font-weight:bold;
+}
+.nav-links{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+.nav-links a{
+color:white;
+text-decoration:none;
+padding:5px 10px;
+}
+.nav-links a:hover{
+background:#00d4ff;
+color:black;
+border-radius:5px;
+}
+/* MOBILE*/
+@media(max-width:600px){
+nav{
+flex-direction:column;
+}
+.nav-links{
+justify-content:center;
+}
+}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">TechStore</div>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="gadgets.html">Gadgets</a>
+<a href="cart.html">Cart</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+<div class="hero">
+<div>
+<h1>TechStore</h1>
+<p>Latest Gadgets at Best Price</p>
+</div>
+</div>
+</body>
+</html>
+Gadget.html
+<!DOCTYPEhtml>
+<html>
+<head>
+<title>Gadgets</title>
+<style>
+body{margin:0;font-family:Arial}
+nav{background:#000;padding:10px;text-align:center}
+nav a{color:white;margin:10px;text-decoration:none}
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;padding:20px;
+}
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#000;
+padding:10px 20px;
+flex-wrap:wrap;
+}
+.logo{
+color:#00d4ff;
+font-size:20px;
+font-weight:bold;
+}
+.nav-links{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+.nav-links a{
+color:white;
+text-decoration:none;
+padding:5px 10px;
+}
+.nav-links a:hover{
+background:#00d4ff;
+color:black;
+border-radius:5px;
+}
+/* MOBILE*/
+@media(max-width:600px){
+nav{
+flex-direction:column;
+}
+.nav-links{
+justify-content:center;
+}
+}
+.card{border:1px solid #ddd;padding:10px;text-align:center}
+img{width:100%;height:150px;object-fit:contain}
+button{background:#007bff;color:white;border:none;padding:8px;cursor:pointer}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">TechStore</div>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="gadgets.html">Gadgets</a>
+<a href="cart.html">Cart</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+<div class="container">
+<!-- ALL PRODUCTS-->
+<div class="card">
+<img src="img/watch.jpg">
+<h3>Watch</h3><p>₹2500</p>
+<button onclick="add('Watch',2500,'img/watch.jpg')">Add</button>
+</div>
+<div class="card">
+<img src="img/Headphone.jpg">
+<h3>Headphones</h3><p>₹3000</p>
+<button onclick="add('Headphones',3000,'img/Headphone.jpg')">Add</button>
+</div>
+<div class="card">
+<img src="img/Bluetooth Speaker.jpeg">
+<h3>Speaker</h3><p>₹1800</p>
+<button onclick="add('Speaker',1800,'img/Bluetooth Speaker.jpeg')">Add</button>
+</div>
+<div class="card">
+<img src="img/Power Bank.jpg">
+<h3>Power Bank</h3><p>₹1200</p>
+<button onclick="add('Power Bank',1200,'img/Power Bank.jpg')">Add</button>
+</div>
+<div class="card">
+<img src="img/mouse.jpg">
+<h3>Mouse</h3><p>₹800</p>
+<button onclick="add('Mouse',800,'img/mouse.jpg')">Add</button>
+</div>
+<div class="card">
+<img src="img/Keyboard.jpg">
+<h3>Keyboard</h3><p>₹1000</p>
+<button onclick="add('Keyboard',1000,'img/Keyboard.jpg')">Add</button>
+</div>
+<div class="card">
+<img src="img/VR Headset.jpg">
+<h3>VR</h3><p>₹4500</p>
+<button onclick="add('VR',4500,'img/VR Headset.jpg')">Add</button>
+</div>
+<div class="card">
+<img src="img/USB Flash Drive.jpg">
+<h3>USB</h3><p>₹600</p>
+<button onclick="add('USB',600,'img/USB Flash Drive.jpg')">Add</button>
+</div>
+</div>
+<script>
+function add(name,price,image){
+let cart=JSON.parse(localStorage.getItem("cart")) |[];
+cart.push({name,price,image});
+localStorage.setItem("cart",JSON.stringify(cart));
+alert(name+" added!");
+}
+</script>
+</body>
+</html>
+
+cart.html
+<!DOCTYPEhtml>
+<html>
+<head>
+<title>Cart</title>
+<style>
+table{width:80%;margin:auto;border-collapse:collapse}
+td,th{border:1px solid;padding:10px;text-align:center}
+img{width:50px}
+button{padding:5px 10px;background:red;color:white;border:none;cursor:pointer}
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#000;
+padding:10px 20px;
+flex-wrap:wrap;
+}
+.logo{
+color:#00d4ff;
+font-size:20px;
+font-weight:bold;
+}
+.nav-links{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+.nav-links a{
+color:white;
+text-decoration:none;
+padding:5px 10px;
+}
+.nav-links a:hover{
+background:#00d4ff;
+color:black;
+border-radius:5px;
+}
+/* MOBILE*/
+@media(max-width:600px){
+nav{
+flex-direction:column;
+}
+.nav-links{
+justify-content:center;
+}
+}
+</style>
+</head>
+<body>
+<nav>
+<body>
+<nav>
+<div class="logo">TechStore</div>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="gadgets.html">Gadgets</a>
+<a href="cart.html">Cart</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+<h2 align="center">Cart</h2>
+</nav>
+<h2 align="center">Cart</h2>
+<table id="t">
+<tr>
+<th>Image</th>
+<th>Item</th>
+<th>Price</th>
+<th>Action</th>
+</tr>
+</table>
+<h3 id="total" align="center"></h3>
+<div style="text-align:center">
+<button onclick="order()" style="background:green">Place Order</button>
+</div>
+<script>
+let cart=JSON.parse(localStorage.getItem("cart")) |[];
+let t=document.getElementById("t");
+let sum=0;
+cart.forEach((item,index)=>{
+let r=t.insertRow();
+r.insertCell(0).innerHTML="<img src='"+item.image+"'>";
+r.insertCell(1).innerText=item.name;
+r.insertCell(2).innerText="₹"+item.price;
+let btn=document.createElement("button");
+btn.innerText="Remove";
+btn.onclick=function(){
+cart.splice(index,1);
+localStorage.setItem("cart",JSON.stringify(cart));
+location.reload();
+};
+r.insertCell(3).appendChild(btn);
+sum+=item.price;
+});
+document.getElementById("total").innerText="Total ₹"+sum;
+function order(){
+localStorage.removeItem("cart");
+window.location="thankyou.html";
+}
+</script>
+</body>
+</html>
+
+contact.html
+<!DOCTYPEhtml>
+<html>
+<head>
+<title>Contact</title>
+<style>
+body{text-align:center;font-family:Arial}
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#000;
+padding:10px 20px;
+flex-wrap:wrap;
+}
+.logo{
+color:#00d4ff;
+font-size:20px;
+font-weight:bold;
+}
+.nav-links{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+.nav-links a{
+color:white;
+text-decoration:none;
+padding:5px 10px;
+}
+.nav-links a:hover{
+background:#00d4ff;
+color:black;
+border-radius:5px;
+}
+/* MOBILE*/
+@media(max-width:600px){
+nav{
+flex-direction:column;
+}
+.nav-links{
+justify-content:center;
+}
+}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">TechStore</div>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="gadgets.html">Gadgets</a>
+<a href="cart.html">Cart</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+<h2>Contact Us</h2>
+<p>Email: college@gmail.com</p>
+<p>Phone: 9876543210</p>
+</body>
+</html>
+
+Thankyou.html
+<!DOCTYPEhtml>
+<html>
+<head>
+<title>Thank You</title>
+</head>
+<body style="text-align:center;padding:100px">
+<nav>
+<div class="logo">TechStore</div>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="gadgets.html">Gadgets</a>
+<a href="cart.html">Cart</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+<h1>✅OrderPlaced</h1>
+<a href="gadgets.html">Continue Shopping</a>
+</body>
+</html>
