@@ -1,0 +1,95 @@
+Index.html
+<!DOCTYPEhtml>
+<html>
+<head>
+<title>User Registration</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="form-box">
+<h2>Register</h2>
+<form id="form">
+<input type="text" id="name" placeholder="Enter Name">
+<div id="nameError" class="error"></div>
+<input type="text" id="email" placeholder="Enter Email">
+<div id="emailError" class="error"></div>
+<input type="number" id="age" placeholder="Enter Age">
+<div id="ageError" class="error"></div>
+<button type="submit">Register</button>
+</form>
+<p id="successMsg" class="success"></p>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+style.css
+body {
+font-family: Arial;
+background: #3498db;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+.form-box {
+background: white;
+padding: 25px;
+border-radius: 10px;
+width: 300px;
+}
+input {
+width: 95%;
+padding: 10px;
+margin: 8px 0;
+}
+button {
+width: 100%;
+padding: 10px;
+background: green;
+color: white;
+border: none;
+}
+.error {
+color: red;
+font-size: 13px;
+}
+.success {
+color: green;
+text-align: center;
+}
+script.js
+document.getElementById("form").addEventListener("submit", function(e) {
+e.preventDefault();
+let name = document.getElementById("name").value.trim();
+let email = document.getElementById("email").value.trim();
+let age = document.getElementById("age").value;
+// Clear errors
+document.getElementById("nameError").innerText = "";
+document.getElementById("emailError").innerText = "";
+document.getElementById("ageError").innerText = "";
+document.getElementById("successMsg").innerText = "";
+let valid = true;
+// Name validation
+if(name === "") {
+document.getElementById("nameError").innerText = "Name is required";
+valid = false;
+}
+// Email validation
+let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+if(email === "") {
+document.getElementById("emailError").innerText = "Email is required";
+valid = false;
+} else if(!email.match(pattern)) {
+document.getElementById("emailError").innerText = "Invalid Email";
+valid = false;
+}
+// Age validation
+if(age === "" || age < 18) {
+document.getElementById("ageError").innerText = "Age must be 18+";
+valid = false;
+}
+// Success
+if(valid) {
+document.getElementById("successMsg").innerText = "Registration Successful!";
+}
+});
